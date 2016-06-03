@@ -35,3 +35,29 @@ dict_class_map = {
     "precedence":"not supported"
 }
 
+
+dict_policy_map = {
+    "pop":"not supported",
+    "push":"not supported",
+    "where":"not supported",
+    "coop-s-default":"not supported",
+    "police":"not supported"
+}
+
+dict_interfaces = {
+    "mgmt":"management",
+    "beacon":"not supported", # for interfaces
+    "cdp":"not supported",
+    "untagged":"not supported",
+    "pop":"not supported",     
+    "push":"not supported",
+    "where":"not supported",
+    "duplex":"not supported",
+    "delay":"not supported",
+    "hardware":"not supported",
+    "lacp":"not supported",
+    "link-state-trap":"not supported",
+    "negotiate":"not supported",
+    "speed":"not supported"
+}
+
