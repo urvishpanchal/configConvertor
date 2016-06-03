@@ -21,3 +21,17 @@ dict_route_map = {
     "local":"not supported",        #match route-type ?
     "nssa-external":"not supported" #match route-type ?
 }
+
+dict_class_map = {
+    "pop":"not supported",
+    "push":"not supported",
+    "where":"not supported",
+    "network-qos":"not supported",
+    "queuing":"not supported",
+    "match-any":"match-all", 
+    "access-group":"not supported",
+    "cos":"not supported",
+    "dscp":"not supported",
+    "precedence":"not supported"
+}
+
