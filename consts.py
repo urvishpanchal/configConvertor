@@ -28,7 +28,7 @@ dict_class_map = {
     "where":"not supported",
     "network-qos":"not supported",
     "queuing":"not supported",
-    "match-any":"match-all",
+    "match-all":"not supported",
     "access-group":"ip access-group",
     "cos":"not supported",
     "dscp":"not supported - Create an access-group to make it work",
