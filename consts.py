@@ -31,7 +31,7 @@ dict_class_map = {
     "match-any":"match-all", 
     "access-group":"not supported",
     "cos":"not supported",
-    "dscp":"not supported",
+    "dscp":"not supported - Create an access-group to make it work",
     "precedence":"not supported"
 }
 
