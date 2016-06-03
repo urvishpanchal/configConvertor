@@ -5,19 +5,17 @@
 """
 """
 
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-
 import imp
 import os
 import argparse
 import arista
+import sys
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c','--configfile', nargs='*', help=('Full path of the Running config that you want to convert to EOS config'))
-    parser.add_argument('-o','--os',help=('The OS from which you want to convert the configs'))
-    parser.add_argument('-p','--part',help=('Specify which part of the config needs to be converted. Example : access-list, policy-map, route-map or the "complete" for the complete config. Note: Complete config is not supported yet'))
+    parser.add_argument('-f','--filename', nargs='*', help=('Full path of the Running config file that you want to convert to EOS config'))
+    parser.add_argument('-o','--os',help=('The venodor OS from which you want to convert the configs. Example: nxos,ios,junos'))
+    parser.add_argument('-p','--part',help=('Specify which part of the config needs to be converted. Example : access-list, policy-map, route-map or "complete" for the complete config. Note: Complete config is not supported yet'))
     return parser.parse_args()
 
 def parse_file(filepath):
@@ -36,6 +34,17 @@ def parse_file(filepath):
 def main():
     """Main routing. provides entry point hook to conversion tools"""
     args = parse_args()
+
+    if args.filename is None:   # if filename is not given
+        print('Filename not given. Example: -f /opt/test.txt')
+        sys.exit()
+    if args.os is None:
+        print('Vendor OS not given. Example: -o nxos')
+        sys.exit()
+    if args.part is None:
+        print('The part of config that you want to convert is not specified. Example: -p access-list, -p route-map or -p complete')
+        sys.exit()
+
     #print(args.configfile[0])
     if args.configfile[0]:
         parsed_file = parse_file(args.configfile[0])
@@ -44,6 +53,8 @@ def main():
         converted_list = arista.get_access_list(parsed_file)
     elif args.part=='route-map' and args.os=='nxos':
         converted_list = arista.get_route_map(parsed_file)
+    elif args.part=='class-map' and args.os=='nxos':
+        converted_list = arista.get_class_map(parsed_file)
 
     for acl in converted_list:
         print(acl)
