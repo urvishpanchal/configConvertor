@@ -42,6 +42,8 @@ def main():
     #print(args.part)
     if args.part=='access-list' and args.os=='nxos':
         converted_list = arista.get_access_list(parsed_file)
+    elif args.part=='route-map' and args.os=='nxos':
+        converted_list = arista.get_route_map(parsed_file)
 
     for acl in converted_list:
         print(acl)
